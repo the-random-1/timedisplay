@@ -50,7 +50,7 @@
 
         setInterval(function() {
             const date = new Date();
-            h.innerHTML = (date.getHours() > 12 || date.getHours() == 0 ? Math.abs(hour - 12) : date.getHours());
+            h.innerHTML = (date.getHours() > 12 || date.getHours() == 0 ? Math.abs(date.getHours() - 12) : date.getHours());
             m.innerHTML = (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes());
             s.innerHTML = date.getSeconds();
             ampm.innerHTML = (date.getHours() >= 12 ? "PM" : "AM");
