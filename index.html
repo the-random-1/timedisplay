@@ -1,0 +1,69 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <style>
+            body {
+                background-color: #8CD8FF;
+                color: black;
+                text-align: center;
+                margin: 0;
+            }
+
+            #con {
+                background-color: white;
+                border: 4px solid black;
+                padding: 10px;
+                width: 50%;
+                margin: 20% auto;
+            }
+
+            p {
+                font-family: Arial;
+                margin: 4%;
+            }
+
+            #time {
+                font-size: 500%;
+            }
+
+            #date {
+                font-size: 150%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="con">
+            <p id="time"><span id="h">10</span>:<span id="m">10</span>:<span id="s">30</span> <span id="ampm">AM</span></p>
+            <p id="date"><span id="dw">Friday</span>, <span id="mo">June</span> <span id="d">25</span>, <span id="y">2023</span></p>
+        </div>
+    </body>
+    <script>
+        let h = document.getElementById("h");
+        let m = document.getElementById("m");
+        let s = document.getElementById("s");
+        let ampm = document.getElementById("ampm");
+        let dw = document.getElementById("dw");
+        let mo = document.getElementById("mo");
+        let d = document.getElementById("d");
+        let y = document.getElementById("y");
+
+        setInterval(function() {
+            const date = new Date();
+            h.innerHTML = formatHour(date.getHours());
+            m.innerHTML = (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes());
+            s.innerHTML = date.getSeconds();
+            ampm.innerHTML = (date.getHours() >= 12 ? "PM" : "AM");
+            dw.innerHTML = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()];
+            mo.innerHTML = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][date.getMonth()];
+            d.innerHTML = date.getDate();
+            y.innerHTML = date.getFullYear();
+        }, 1);
+
+        function formatHour(hour) {
+            if (hour > 12 || hour == 0) {
+                return (Math.abs(hour - 12));
+            }
+        }
+    </script>
+</html>
